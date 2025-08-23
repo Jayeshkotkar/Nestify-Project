@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 export const StoreContext = createContext(null);
 const StoreContextProvider = ({ children }) => {
 
-    const backend_url = "http://localhost:5000";
+    const backend_url = "https://nestify-backend-uowt.onrender.com";
 
     const [listing, setListing] = useState([]);
     // Initialize from localStorage so UI has values immediately on refresh
