@@ -1,0 +1,251 @@
+/* Container */
+.add-container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 24px 16px 56px;
+  background:
+    radial-gradient(800px 400px at 110% -10%, rgba(219, 234, 254, 0.5) 0%, rgba(255,255,255,0) 50%),
+    radial-gradient(900px 500px at -10% 0%, rgba(255, 228, 230, 0.45) 0%, rgba(255,255,255,0) 52%),
+    #f7f7f8;
+  border-radius: 18px;
+}
+
+.add-header { margin-bottom: 16px; }
+
+.add-header h1 {
+  margin: 0 0 6px;
+  font-size: clamp(24px, 3vw, 30px);
+  color: #111827;
+}
+
+.add-header p {
+  margin: 0 0 16px;
+  color: #6b7280;
+}
+
+.add-header::after {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 3px;
+  background: #ff385c; /* brand accent */
+  border-radius: 2px;
+  margin-top: 8px;
+}
+
+/* Form */
+.add-form {
+  background: #fff;
+  border: 1px solid #ececec;
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: 0 14px 36px rgba(0,0,0,0.08);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 16px;
+  margin-bottom: 14px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field > span {
+  font-size: 13px;
+  color: #374151;
+  font-weight: 600;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  color: #111827;
+  padding: 12px 14px;
+  border-radius: 12px;
+  outline: none;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: #9ca3af;
+}
+
+.field input:focus,
+.field textarea:focus {
+  border-color: #ff8fa3;
+  box-shadow: 0 0 0 3px rgba(255, 56, 92, 0.18);
+}
+
+/* Input with prefix (e.g., currency) */
+.input-prefix {
+  position: relative;
+  width: 100%; /* ensure wrapper spans full width like other inputs */
+}
+.input-prefix span {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6b7280;
+}
+.input-prefix input {
+  padding-left: 32px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  display: block;
+}
+
+/* Image upload */
+.add-img-upload {
+  grid-column: 1 / -1;
+  background: #fafafa;
+  border: 1px dashed #d1d5db;
+  border-radius: 14px;
+  padding: 16px;
+}
+.upload-zone {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 16px;
+  align-items: center;
+}
+.upload-preview {
+  width: 120px;
+  height: 90px;
+  border-radius: 10px;
+  background: #f3f4f6;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+}
+.upload-preview img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.upload-actions { display: flex; gap: 10px; align-items: center; }
+.upload-hint { color: #6b7280; font-size: 13px; }
+.upload-btn {
+  border: 1px solid #d1d5db;
+  background: white;
+  color: #111827;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.upload-btn:hover { background: #f3f4f6; }
+
+/* Actions */
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.btn {
+  border: 1px solid #d1d5db;
+  background: white;
+  color: #111827;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.15s ease-in-out, background-color 0.15s ease-in-out, transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn:hover {
+  border-color: #b9c0c7;
+  transform: translateY(-1px);
+}
+
+.btn.primary {
+  background: #ff385c; /* brand */
+  border-color: #ff385c;
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(255, 56, 92, 0.25);
+}
+
+.btn.primary:hover {
+  background: #e03153;
+  border-color: #e03153;
+}
+
+/* Responsive */
+/* Match Update form mobile layout */
+@media (max-width: 900px) {
+  /* Keep page/card standard, avoid overflow and odd gaps */
+  .add-container { padding-left: 0; padding-right: 0; overflow-x: hidden; }
+  .add-form {
+    width: 100%;
+    max-width: 880px;
+    margin: 0 auto;
+    padding-left: 0; padding-right: 0; /* move gutter to grid */
+    border-left: 1px solid #e5e7eb;
+    border-right: 1px solid #e5e7eb;
+    border-radius: 14px;
+  }
+  /* Single column; grid provides the only horizontal gutter */
+  .add-container .grid { grid-template-columns: 1fr !important; padding: 0 12px; box-sizing: border-box; }
+  /* Ensure ALL children (including Price and Location) span full width */
+  .add-container .grid > * { grid-column: 1 / -1 !important; }
+  /* Ensure form blocks and controls truly fill the row */
+  .add-container .grid > label.field,
+  .add-container .grid > div { width: 100%; max-width: 100%; box-sizing: border-box; }
+  .add-container .grid .field,
+  .add-container .grid .input-prefix,
+  .add-container .grid .field input,
+  .add-container .grid .field textarea { width: 100%; max-width: 100%; }
+  /* Remove per-block padding so children align to grid gutter */
+  .add-container .grid > label.field { padding: 0 !important; margin: 0; }
+  .add-container .grid > .add-img-upload { padding-left: 0; padding-right: 0; margin: 0; }
+  /* Make Title, Description and Image full-bleed to grid gutter */
+  .add-container .grid .field:nth-of-type(1),
+  .add-container .grid .field:nth-of-type(2),
+  .add-container .grid .add-img-upload {
+    margin-left: -12px !important;
+    margin-right: -12px !important;
+    width: calc(100% + 24px) !important;
+    max-width: none !important;
+    box-sizing: border-box;
+  }
+  /* Slight left indent for all labels on mobile */
+  .add-container .grid .field > span,
+  .add-container .grid .add-img-upload > p { padding-left: 6px; color: #64748b; }
+}
+
+@media (max-width: 768px) {
+  .grid { grid-template-columns: 1fr !important; }
+  .add-container .grid > * { grid-column: 1 / -1 !important; }
+  .add-container .grid > label.field,
+  .add-container .grid > div { width: 100%; max-width: 100%; box-sizing: border-box; }
+  .add-header h1 { font-size: 22px; }
+  .upload-zone { grid-template-columns: 1fr; }
+  .upload-preview { width: 100%; height: 180px; }
+  /* Reduce inner padding so card matches update form on phones */
+  .add-form { padding: 18px 0; }
+}
+
+@media (max-width: 420px) {
+  /* Keep standard card width; avoid 100vw which can introduce offsets */
+  .add-container { padding: 0 0 24px; }
+  .add-form { padding: 10px 0; width: 100%; }
+  .add-img-upload { padding: 0 !important; }
+  .upload-preview { height: 170px; }
+  .actions { justify-content: stretch; }
+  .actions .btn { flex: 1 0 auto; text-align: center; }
+}

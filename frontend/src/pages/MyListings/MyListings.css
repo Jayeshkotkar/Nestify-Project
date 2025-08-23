@@ -1,0 +1,161 @@
+/* My Listings page styles */
+
+.my-listings {
+  background: #f3f4f6;
+  min-height: 80vh;
+  padding: 24px 16px 56px;
+}
+
+.my-header {
+  max-width: 1100px;
+  margin: 0 auto 16px;
+}
+.my-header h1 {
+  margin: 0 0 6px;
+  color: #111827;
+  font-weight: 800;
+  font-size: clamp(22px, 2.6vw, 28px);
+}
+.my-header p {
+  margin: 0;
+  color: #6b7280;
+}
+
+/* Empty state */
+.empty-state {
+  max-width: 900px;
+  margin: 18px auto 0;
+  padding: clamp(18px, 3.6vw, 28px);
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  background:
+    radial-gradient(600px 260px at 100% -10%, rgba(219, 234, 254, 0.5) 0%, rgba(255,255,255,0) 50%),
+    radial-gradient(700px 300px at -10% 0%, rgba(255, 228, 230, 0.45) 0%, rgba(255,255,255,0) 52%),
+    #ffffff;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+  text-align: center;
+}
+
+.empty-badge {
+  width: 64px;
+  height: 64px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 12px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  font-size: 26px;
+}
+
+.empty-state h2 {
+  margin: 0 0 6px;
+  color: #111827;
+  font-size: clamp(18px, 2.2vw, 24px);
+  font-weight: 800;
+}
+
+.empty-state p {
+  margin: 0 0 14px;
+  color: #6b7280;
+}
+
+.empty-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 6px;
+}
+
+.btn-cta {
+  appearance: none;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 16px;
+  background: #ff385c;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(255,56,92,0.28);
+  transition: transform 140ms ease, box-shadow 140ms ease, background 140ms ease;
+}
+.btn-cta:hover { background: #ff4b6c; box-shadow: 0 10px 24px rgba(255,56,92,0.32); }
+.btn-cta:active { transform: translateY(1px); }
+
+.btn-secondary {
+  appearance: none;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 10px 16px;
+  background: #f9fafb;
+  color: #111827;
+  font-weight: 700;
+  cursor: pointer;
+}
+.btn-secondary:hover { background: #f3f4f6; }
+
+.empty-tips {
+  margin: 16px auto 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  justify-content: center;
+  color: #6b7280;
+}
+.empty-tips li { font-size: 13px; }
+
+/* Grid */
+.my-cards {
+  max-width: 1100px;
+  margin: 8px auto 0;
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 16px;
+}
+@media (min-width: 640px) { .my-cards { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .my-cards { grid-template-columns: repeat(3, 1fr); } }
+
+.my-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+  cursor: pointer;
+}
+.my-card:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(0,0,0,0.1); border-color: #e6eaf0; }
+
+.my-card-image { position: relative; aspect-ratio: 4 / 3; background: #f3f4f6; }
+.my-card-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.my-card-body { padding: 12px 14px; }
+.my-card-title { margin: 0 0 6px; color: #111827; font-weight: 800; font-size: 18px; }
+.my-card-loc { margin: 0 0 8px; color: #6b7280; }
+.my-card-price { font-weight: 700; color: #111827; }
+.my-card-price small { font-weight: 400; color: #6b7280; }
+
+/* Mobile tweaks */
+@media (max-width: 480px) {
+  .my-listings { padding: 16px 12px 36px; }
+  .my-header { margin-bottom: 12px; }
+  .my-cards { gap: 12px; }
+  .my-card-body { padding: 10px 12px; }
+  .my-card-title { font-size: 16px; }
+  .my-card-loc { font-size: 13px; }
+  .my-card-price { font-size: 15px; }
+
+  .empty-state { margin-top: 12px; padding: 16px; }
+  .empty-actions { flex-direction: column; gap: 10px; }
+  .empty-actions .btn-cta, .empty-actions .btn-secondary { width: 100%; }
+  .empty-tips { gap: 8px 10px; }
+}
+
+@media (max-width: 360px) {
+  .my-listings { padding: 12px 10px 28px; }
+  .my-card-title { font-size: 15px; }
+}

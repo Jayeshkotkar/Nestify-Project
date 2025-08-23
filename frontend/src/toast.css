@@ -1,0 +1,35 @@
+/* Mobile-responsive overrides for react-toastify */
+@media (max-width: 900px) {
+  /* Make container span the viewport gutter instead of fixed top-right width */
+  .app-toast.Toastify__toast-container--top-right,
+  .app-toast.Toastify__toast-container--top-left,
+  .app-toast.Toastify__toast-container--top-center,
+  .app-toast.Toastify__toast-container--bottom-right,
+  .app-toast.Toastify__toast-container--bottom-left,
+  .app-toast.Toastify__toast-container--bottom-center {
+    right: 8px !important;
+    left: 8px !important;
+    width: auto !important; /* equals calc(100vw - 16px) */
+    padding: 0 !important;
+  }
+
+  /* Tweak toast card spacing for small screens */
+  .app-toast .Toastify__toast {
+    margin-bottom: 8px !important;
+    border-radius: 10px !important;
+    min-height: 44px;
+  }
+
+  /* Body text sizing and padding for readability */
+  .app-toast .Toastify__toast-body {
+    margin: 0 !important;
+    padding: 8px 12px !important;
+    font-size: 14px !important;
+    line-height: 1.35 !important;
+  }
+
+  /* Smaller close button touch target */
+  .app-toast .Toastify__close-button {
+    padding: 6px !important;
+  }
+}

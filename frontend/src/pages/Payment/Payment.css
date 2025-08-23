@@ -1,0 +1,209 @@
+*, *::before, *::after { box-sizing: border-box; }
+
+/* Page layout */
+.payment-page {
+    min-height: auto;        /* allow page to shrink to content height */
+    display: grid;
+    justify-items: center;   /* keep horizontal centering */
+    align-content: start;    /* move content towards the top */
+    padding: 8px 24px 48px;  /* slightly more space above footer */
+    background: #f8fafc; /* light slate */
+}
+
+/* Card */
+.payment-card {
+    width: min(720px, 94vw);
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(2, 6, 23, 0.08);
+    padding: 20px;
+    margin: 80px auto 48px; /* keep large top spacing, slightly increase bottom margin */
+}
+
+.payment-header h1 {
+    margin: 0 0 6px;
+    font-size: 22px;
+    font-weight: 800;
+    color: #0f172a; /* slate-900 */
+}
+
+.payment-sub {
+    margin: 0 0 14px;
+    color: #475569; /* slate-600 */
+    font-size: 14px;
+}
+
+/* Listing summary (compact card above the form) */
+.listing-summary {
+    display: grid;
+    grid-template-columns: 104px 1fr;
+    gap: 14px;
+    align-items: center;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 10px;
+    margin: 12px 0 8px;
+    background: #fafafa;
+}
+
+.ls-thumb {
+    width: 104px;
+    height: 78px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #f1f5f9; /* slate-100 */
+    display: grid;
+    place-items: center;
+}
+.ls-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.ls-thumb.placeholder {
+    border: 1px dashed #e5e7eb;
+}
+
+.ls-info { display: grid; gap: 4px; }
+.ls-title { font-weight: 700; color: #0f172a; font-size: 16px; }
+.ls-location { color: #64748b; font-size: 13px; }
+.ls-price { font-weight: 700; color: #111827; font-size: 15px; }
+.ls-unit { font-weight: 500; color: #6b7280; font-size: 12px; }
+
+/* Form */
+.payment-form {
+    display: grid;
+    gap: 16px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 16px;
+    row-gap: 14px;
+    align-items: start; /* align fields to the top for consistent rows */
+}
+
+@media (max-width: 640px) {
+    .payment-page { padding: 8px 12px 32px; }
+    .payment-card { width: 100%; padding: 16px; margin: 18px auto 28px; }
+    .payment-header h1 { font-size: 20px; }
+    .payment-sub { font-size: 13px; }
+    .form-grid { grid-template-columns: 1fr; }
+    .form-actions { justify-content: stretch; }
+    /* Scope full-width primary button to payment page only */
+    .payment-page .btn.primary { width: 100%; }
+    .listing-summary { grid-template-columns: 84px 1fr; gap: 10px; padding: 10px; }
+    .ls-thumb { width: 84px; height: 68px; }
+    .ls-title { font-size: 15px; }
+}
+
+/* Very small phones */
+@media (max-width: 420px) {
+    .payment-page { padding: 6px 10px 24px; }
+    .payment-card { padding: 12px; margin: 12px auto 22px; border-radius: 12px; }
+    .payment-header h1 { font-size: 18px; }
+    /* Stack listing summary to one column with a wider image */
+    .listing-summary { grid-template-columns: 1fr; gap: 10px; padding: 10px; }
+    .ls-thumb { width: 100%; height: 160px; border-radius: 10px; }
+    .ls-thumb img { object-fit: cover; }
+}
+
+.form-field {
+    display: grid;
+    gap: 8px;
+}
+
+.form-field label {
+    font-weight: 600;
+    font-size: 14px;
+    color: #111827; /* gray-900 */
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+    width: 100%;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-size: 14px;
+    outline: none;
+    background: #ffffff;
+    color: #0f172a;
+    transition: border-color 120ms ease, box-shadow 120ms ease;
+    height: 44px; /* consistent input height for alignment */
+}
+
+.form-field input::placeholder {
+    color: #9ca3af; /* gray-400 */
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+    border-color: #93c5fd; /* blue-300 */
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1); /* blue ring */
+}
+
+/* Disabled inputs: show not-allowed cursor, hide caret, and remove focus ring */
+.form-field input:disabled,
+.form-field select:disabled,
+.form-field textarea:disabled {
+    cursor: not-allowed;
+    caret-color: transparent;
+    user-select: none;
+    background: #f3f4f6; /* gray-100 */
+}
+.form-field input:disabled:focus,
+.form-field select:disabled:focus,
+.form-field textarea:disabled:focus {
+    border-color: #e5e7eb; /* reset to default border */
+    box-shadow: none;
+}
+
+/* Actions */
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 6px;
+}
+
+.btn {
+    appearance: none;
+    border: 1px solid #e5e7eb;
+    background: #fff;
+    color: #111827;
+    font-weight: 600;
+    padding: 10px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.btn.primary {
+    border-color: #ef4444;
+    background: #ef4444;
+    color: #fff;
+}
+
+.btn.primary:hover {
+    filter: brightness(0.98);
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Remove spinners from number inputs for better visual alignment */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  appearance: textfield; /* standard */
+  -moz-appearance: textfield; /* Firefox */
+}

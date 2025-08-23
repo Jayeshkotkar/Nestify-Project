@@ -1,0 +1,295 @@
+/* Update Listing – modern, responsive form card */
+:root {
+    --bg: #f6f7fb;
+    --card: #ffffff;
+    --text: #0f172a;
+    --muted: #64748b;
+    --border: #e5e7eb;
+    --ring: #2563eb;
+    --danger: #ef4444;
+    --shadow: 0 10px 26px rgba(15, 23, 42, 0.08);
+    --radius: 14px;
+  }
+
+  /* Ensure stacking up to 900px (covers some tablet/mobile views) */
+  @media (max-width: 900px) {
+    /* Keep page/card standard, avoid overflow and odd gaps */
+    .update-container { padding-left: 0; padding-right: 0; overflow-x: hidden; }
+    .add-form {
+      width: 100%;
+      max-width: 880px;
+      margin: 0 auto;
+      padding-left: 0; padding-right: 0; /* move gutter to grid for exact child alignment */
+      border-left: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+    /* Single column; grid provides the only horizontal gutter */
+    .update-container .grid { grid-template-columns: 1fr !important; padding: 0 12px; box-sizing: border-box; }
+    .update-container .grid > label.field:nth-of-type(1),
+    .update-container .grid > label.field:nth-of-type(2) { grid-column: 1 / -1 !important; }
+    .update-container .grid .add-img-upload { grid-column: 1 / -1 !important; }
+    /* Remove per-field padding so all children share the same gutter via grid */
+    .update-container .grid > label.field { padding: 0 !important; margin: 0; }
+    .update-container .grid > .add-img-upload { padding-left: 0; padding-right: 0; margin: 0; }
+    /* Make image block content align with inputs: remove inner padding; grid gutter is the only gutter */
+    .add-img-upload { padding: 0 !important; }
+    .add-img-upload label { margin: 0; width: 100%; display: block; }
+    /* Make Title, Description, and Image containers full-bleed to grid gutter */
+    .update-container .grid .field-title,
+    .update-container .grid .field-description,
+    .update-container .grid .add-img-upload {
+      margin-left: -12px !important;
+      margin-right: -12px !important;
+      width: calc(100% + 24px) !important;
+      max-width: none !important;
+      box-sizing: border-box;
+    }
+    /* Inputs simply fill their containers */
+    .update-container .grid .field-title input,
+    .update-container .grid .field-description textarea {
+      display: block;
+      width: 100% !important;
+      max-width: 100% !important;
+      box-sizing: border-box;
+    }
+    /* Add slight left margin for ALL field label texts on mobile */
+    .update-container .grid .field > span,
+    .update-container .grid .add-img-upload > p {
+      padding-left: 6px;
+    }
+  }
+  
+  .update-container {
+    min-height: 100vh;
+    padding: 32px 16px 56px;
+    background: var(--bg);
+    display: grid;
+    place-items: start center;
+  }
+  
+  /* Card form */
+  .add-form {
+    width: 100%;
+    max-width: 880px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 22px;
+  }
+  
+  @media (min-width: 768px) {
+    .add-form { padding: 28px; }
+  }
+  
+  /* Grid */
+  .grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: 1fr;
+  }
+  
+  @media (min-width: 900px) {
+    .grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+  }
+  
+  /* Field */
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .field > span {
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    padding-left: 6px; /* consistent left indent for all labels */
+  }
+  
+  /* Inputs and Textarea */
+  .field input,
+  .field textarea {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 14px;
+    background: #f9fafb;
+    color: var(--text);
+    outline: none;
+    transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+  }
+  
+  .field textarea {
+    min-height: 120px;
+    resize: vertical;
+    line-height: 1.5;
+  }
+  
+  .field input::placeholder,
+  .field textarea::placeholder {
+    color: #94a3b8;
+  }
+  
+  .field input:focus,
+  .field textarea:focus {
+    background: #fff;
+    border-color: #c7d2fe;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+  }
+  
+  /* Make long fields span two columns on desktop for better balance */
+  @media (min-width: 900px) {
+    .field:nth-of-type(2),
+    .field:nth-of-type(5) { /* description and price can be adjusted as you prefer */
+      grid-column: span 2;
+    }
+  }
+  
+  /* Image upload block */
+  .add-img-upload {
+    grid-column: span 2;
+    background: #f8fafc;
+    border: 1px dashed #cbd5e1;
+    border-radius: 12px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  
+  .add-img-upload p {
+    margin: 0;
+    color: var(--muted);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.2px;
+    padding-left: 6px; /* align image title with other labels */
+  }
+  
+  .add-img-upload label {
+    width: 100%;
+    cursor: pointer;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #eef2ff;
+    border: 1px solid #e2e8f0;
+    transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease;
+    display: block;
+  }
+  
+  .add-img-upload label:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 18px rgba(37, 99, 235, 0.15);
+    background: #eaf0ff;
+  }
+  
+  .add-img-upload img,
+  .placeholder-img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    display: block;
+    background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+  }
+  
+  /* Actions */
+  .actions {
+    margin-top: 18px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  
+  .btn {
+    appearance: none;
+    border: 1px solid var(--border);
+    background: #f8fafc;
+    color: var(--text);
+    border-radius: 999px;
+    padding: 10px 16px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 14px;
+    transition: background 160ms ease, box-shadow 160ms ease, transform 120ms ease, border-color 160ms ease;
+  }
+  
+  .btn:hover {
+    background: #eef2ff;
+    border-color: #dbeafe;
+    transform: translateY(-1px);
+  }
+  
+  .btn:active { transform: translateY(0); }
+  
+  .btn.primary {
+    color: #fff;
+    background: linear-gradient(135deg, #ef4444, #f97316);
+    border-color: transparent;
+    box-shadow: 0 10px 20px rgba(239, 68, 68, 0.22);
+  }
+  
+  .btn.primary:hover {
+    box-shadow: 0 12px 26px rgba(239, 68, 68, 0.28);
+  }
+  
+  /* Loading / Error text inside container */
+  .update-container > p,
+  .update-container .status {
+    color: var(--muted);
+    font-size: 14px;
+  }
+  
+  /* Accessibility */
+  .add-form :focus-visible {
+    outline: 2px solid #93c5fd;
+    outline-offset: 2px;
+    border-radius: 10px;
+  }
+  
+  /* Reduce motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+
+  /* Small tablets and phones */
+  @media (max-width: 768px) {
+    /* Do NOT add side padding here; keep gutter only on grid */
+    .add-form { padding: 18px 0; }
+    /* Ensure single column grid on mobile */
+    .update-container .grid { grid-template-columns: 1fr !important; gap: 12px; padding: 0 12px; box-sizing: border-box; }
+    /* Explicitly stack Title and Description */
+    .update-container .grid > label.field:nth-of-type(1),
+    .update-container .grid > label.field:nth-of-type(2) {
+      grid-column: 1 / -1 !important;
+    }
+    .add-img-upload { grid-column: span 2; }
+    .add-img-upload img,
+    .placeholder-img { height: 200px; }
+  }
+
+  @media (max-width: 420px) {
+    /* Reassert stacking on very small phones */
+    .update-container .grid { grid-template-columns: 1fr !important; gap: 10px; padding: 0 12px; box-sizing: border-box; }
+    .update-container .grid > label.field:nth-of-type(1),
+    .update-container .grid > label.field:nth-of-type(2) {
+      grid-column: 1 / -1 !important;
+    }
+    /* Keep standard card width; avoid 100vw which can introduce offsets */
+    .update-container { padding: 0 0 24px; }
+    .add-form { padding: 10px 0; width: 100%; }
+    .add-img-upload { padding: 0 !important; }
+    .add-img-upload img,
+    .placeholder-img { height: 180px; }
+    .actions { justify-content: stretch; }
+    .actions .btn { flex: 1 0 auto; text-align: center; }
+  }
