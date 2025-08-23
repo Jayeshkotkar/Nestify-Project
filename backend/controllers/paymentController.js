@@ -40,7 +40,7 @@ export const createPayment = async (req, res) => {
     }
     const stripe = new Stripe(stripeKey);
 
-    const FRONTEND_URL="http://localhost:5173";
+    const FRONTEND_URL="https://nestify-project-q44d.onrender.com";
 
     const frontendBase = FRONTEND_URL;
 
