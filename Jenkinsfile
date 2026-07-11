@@ -32,12 +32,11 @@ pipeline {
 
                     withSonarQubeEnv('SonarQube') {
                         withEnv([
-                    "JAVA_HOME=C:\\Program Files\\Java\\jdk-26.0.1",
-                    "PATH+JAVA=C:\\Program Files\\Java\\jdk-26.0.1\\bin"
-                ])
-
-                        
-                        bat "${scannerHome}\\bin\\sonar-scanner.bat"
+                            "JAVA_HOME=C:\\Program Files\\Java\\jdk-26.0.1",
+                            "PATH+JAVA=C:\\Program Files\\Java\\jdk-26.0.1\\bin"
+                        ]) {
+                            bat "\"${scannerHome}\\bin\\sonar-scanner.bat\""
+                        }
                     }
                 }
             }
